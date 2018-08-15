@@ -31,3 +31,10 @@ VENV_NAME: testinfra-issue-345
 VENV_NAME_VERSION: testinfra-issue-345-2.7.15
 VENV_PYTHON: 2.7.15
 ```
+
+#### Run the tests
+
+```
+vagrant up
+pytest -vs test_default.py
+```

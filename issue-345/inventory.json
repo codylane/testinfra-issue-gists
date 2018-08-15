@@ -1,0 +1,24 @@
+{
+    "suts": {
+        "hosts": [
+            "foo-centos7",
+            "foo-ubuntu1404"
+        ]
+    },
+    "_meta": {
+        "hostvars": {
+           "foo-centos7": {
+                "ansible_ssh_host": "67.77.255.112",
+                "ansible_port": "22",
+                "ansible_ssh_private_key_file": "~/.vagrant.d/insecure_private_key",
+                "ansible_user": "vagrant"
+            },
+            "foo-ubuntu1404": {
+                "ansible_ssh_host": "67.77.255.113",
+                "ansible_port": "22",
+                "ansible_ssh_private_key_file": "~/.vagrant.d/insecure_private_key",
+                "ansible_user": "vagrant"
+            }
+        }
+    }
+}

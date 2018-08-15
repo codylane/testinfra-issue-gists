@@ -1,0 +1,27 @@
+---
+
+- hosts: all
+  become: true
+
+  tasks:
+    - name: Debugging hostvars
+      debug:
+        msg: "{{ hostvars }}"
+
+    - name: Debugging inventory_dir
+      debug:
+        msg: "{{ inventory_dir }}"
+
+    - name: Debugging role_path
+      debug:
+        msg: "{{ role_path }}"
+      when:
+        role_path is defined
+
+  roles:
+    - role: codylane.pyenv
+      pyenv_install_these_pythons:
+        - 2.7.15
+      pyenv_user: vagrant
+      pyenv_group: vagrant
+      pyenv_root: /home/vagrant/.pyenv

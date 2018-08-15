@@ -1,0 +1,34 @@
+#!/usr/bin/env python
+#
+# Date: 2018-04-27
+# Author: Cody Lane
+
+import argparse
+import io
+import json
+import sys
+
+
+def create_parser():
+    parser = argparse.ArgumentParser(description='An ansible dynamic host inventory script')
+
+    parser.add_argument('--host', dest='host', action='store', default=None, help='A hostname/group name in the inventory')
+    parser.add_argument('--list', dest='host_list', action='store_true', default=False, help='Returns the entire inventory as valid JSON')
+
+    return parser
+
+
+if __name__ == '__main__':
+    with io.open('./inventory.json', encoding='utf-8', mode='r') as fd:
+        inventory = json.loads(fd.read())
+
+    selected = {}
+
+    parser = create_parser()
+    args = parser.parse_args(sys.argv[1:])
+    if args.host_list:
+        selected = inventory
+    elif args.host:
+        selected = inventory['_meta']['hostvars'][args.host]
+
+    print(json.dumps(selected, indent=4))
